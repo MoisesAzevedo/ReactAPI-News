@@ -1,0 +1,15 @@
+key NewsAPI: c452469e67b54b90918dc69924b83d36
+key mediastack: 6f3ea6413a95845ff30c7481807628df
+
+
+
+   //"https://newsapi.org/v2/top-headlines?country=br&category=technology&apiKey=c452469e67b54b90918dc69924b83d36"
+        //"https://newsapi.org/v2/top-headlines?sources=Canaltech&apiKey=c452469e67b54b90918dc69924a83d36"
+        //"https://newsapi.org/v2/everything?q=keyword&apiKey=c452469e67b54b90918dc69924b83d36"
+        //"http://api.mediastack.com/v1/news?access_key=6fc6d6bf052f29c8607c673a732f3da0"
+
+
+
+Ideia:
+
+seção de ultimas noticias

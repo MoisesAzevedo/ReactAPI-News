@@ -1,0 +1,71 @@
+Arquivo de beckup
+
+
+
+=======================================
+        NewsAPI.jsx
+=======================================
+import React, { Component } from "react";
+import Newss from "../Newss";
+
+//export const NewsAPI = () => {
+
+class NewsAPI extends Component {
+  render() {
+    return (
+    <>
+    <div>oi</div>
+      <Newss newss={this.state.newss} /> //renderiza o parâmetro criado no componente Newss
+    </>
+    );
+  }
+  state = {
+    newss: []
+  };
+
+  componentDidMount() {
+    fetch(
+      "http://api.mediastack.com/v1/news?access_key=6f3ea6413a95845ff30c7481807628df"
+    )
+      /* .then(res => res.json()) */
+      .then((res) => {
+        this.setState({ newss: res.data });
+      })
+      .catch((res)=>{console.log("deu ruim" + res.data)});
+  }
+}
+
+export default NewsAPI;
+
+
+
+
+=======================================
+        🌮🥪🥗🧀Newss.jsx
+=======================================
+
+import React from "react";
+
+const Newss = ({ newss }) => {
+
+console.log(newss)
+ /*  return (
+    <div>
+      <center>
+        <h1>Latest News</h1>
+      </center>
+      {newss && newss.map((news) => (
+        <div class="card">
+          <div>deu certo</div>
+          <div class="card-body">
+            <h5 class="card-title">{news.title}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{news.author}</h6>
+            <p class="card-text">{news.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  ); */
+};
+
+export default Newss;

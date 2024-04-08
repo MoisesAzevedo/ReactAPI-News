@@ -1,0 +1,20 @@
+
+    {
+        "id": "25dbe75a-bc12-44e1-8588-c5366060f51d",
+        "title": "Opinião - Samuel Pessôa: Agenda equivocada na indústria",
+        "description": "Programa para carros contraria agenda ambiental e ajuste das contas públicas",
+        "url": "https://www1.folha.uol.com.br/colunas/samuelpessoa/2023/05/agenda-equivocada-na-industria.shtml",
+        "author": "folha",
+        "image": "https://f.i.uol.com.br/fotografia/2022/10/27/1666874987635a7e6be6a20_1666874987_3x2_rt.jpg",
+        "language": "pt",
+        "category": [
+            "opinion"
+        ],
+        "published": "2023-05-27 13:00:00 +0000"
+    },
+   
+==========
+CONSULTA DE CATEGORIAS: https://api.currentsapi.services/v1/available/categories
+==========
+
+   
