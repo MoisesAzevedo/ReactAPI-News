@@ -9,7 +9,6 @@ const NewsAPI = () => {
     categoryParse +
     "&language=pt&apiKey=c452469e67b54b90918dc69924b83d36";
 
-  //const for API, and null image filter
   const [newsObject, setNewsObject] = useState([]);
   const newsObjectFilter = newsObject.filter(
     (item) => item.urlToImage !== null
@@ -32,11 +31,11 @@ const NewsAPI = () => {
   console.log("Product");
   console.log(newsObject);
 
-  return (
+  /*   return (
     <>
       <NewsAPIColumns news={newsObjectFilter} />;
     </>
-  );
+  ); */
 };
 
 export default NewsAPI;

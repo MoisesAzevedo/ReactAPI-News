@@ -54,7 +54,7 @@ const NewsAPIColumns = (newsObject) => {
 
       newsJSX_col.push(
         <Container>
-          <Image src={items[i].urlToImage} onClick={items[i].url} />
+          <Image src={items[i].image} onClick={items[i].url} />
           <Letter>
             <Tippy
               content={<BoxText>{items[i].title}</BoxText>}
@@ -74,7 +74,7 @@ const NewsAPIColumns = (newsObject) => {
             </Tippy>
             <Author>
               <Favicon src={favicon} />
-              <NewsAuthor>{items[i].source.name}</NewsAuthor>
+              <NewsAuthor>{items[i].author}</NewsAuthor>
               <Date>{/* {items.publishedAt} */}</Date>
             </Author>
           </Letter>

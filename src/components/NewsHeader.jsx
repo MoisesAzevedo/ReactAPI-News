@@ -14,13 +14,13 @@ let category = localStorage.getItem("category");
 let categoryNotDefined = "";
 
 var categories = [
-  "all",
+  "general",
   "technology",
   "programming",
   "science",
   "finance",
-  "art",
-  "gadgets",
+  "health",
+  "entertainment",
   "world"
 ];
 
@@ -30,8 +30,8 @@ var categoriesSelector = [
   "Programação",
   "Ciência",
   "Dinheiro",
-  "Artes",
-  "Gadgets",
+  "Saude",
+  "Entretenimento",
   "Mundo"
 ];
 
