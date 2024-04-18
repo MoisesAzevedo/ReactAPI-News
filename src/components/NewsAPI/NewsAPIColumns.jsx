@@ -14,7 +14,7 @@ import { Title } from "../CurrentsAPI/Title";
 import { Image } from "../CurrentsAPI/Image";
 import Tippy from "@tippyjs/react";
 
-// o parâmetro newsObject é obtido como props no arquivo NewsAPI.jsx
+// o parâmetro newsObject é obtido como props no arquivo CurrentsAPI.jsx
 const NewsAPIColumns = (newsObject) => {
   //slice, pega as 04 primeiras instancias
   /* console.log("NEWS OBJECT IN NEWS API COLUMNS ");
@@ -150,6 +150,7 @@ const NewsAPIColumns = (newsObject) => {
       <Wrapper>{newsJSX_row}</Wrapper>
     </>
   );
+  console.log("modify to new commit");
 };
 
 export default NewsAPIColumns;
