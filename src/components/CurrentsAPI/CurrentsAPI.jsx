@@ -8,6 +8,7 @@ const CurrentsAPI = () => {
   const newsObjectFilter = allNews.filter((item) =>
     item.image.includes("https")
   );
+
   const hourDate = [];
 
   const url =
