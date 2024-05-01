@@ -17,20 +17,21 @@ export const Wrapper = styled.div`
 `;
 
 //======================= articles block ===================
-export const PrimaryColumnDif_grid = styled.div`
-  @media screen and (max-width: ${desktopDisplay[1]}) {
-  }
 
-  @media screen and (max-width: ${mobileDisplay}) {
-  }
-`;
-
-export const EqualColumns_grid = styled.div`
+export const RowGrid = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+
+  & > div:nth-child(-n + 4) {
+    width: 100%;
+    margin: 10px;
+  }
+
+  @media screen and (max-width: ${desktopDisplay[1]}) {
+  }
 `;
-export const SecondaryColumnDif_grid = styled(PrimaryColumnDif_grid)``;
+
 //==========================================================
 
 //the article

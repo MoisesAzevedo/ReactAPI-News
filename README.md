@@ -1,4 +1,4 @@
-Competências Demonstradas
+## Competências Demonstradas
 
 - React.js
 - Type Script
@@ -12,5 +12,4 @@ Competências Demonstradas
 
 METAS
 
-- Configurar responsividade
 - adicionar noticias em alta

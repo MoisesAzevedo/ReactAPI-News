@@ -1,6 +1,5 @@
 import {
   Wrapper,
-  EqualColumns_grid,
   Container,
   Letter,
   Description,
@@ -8,7 +7,8 @@ import {
   Favicon,
   Date,
   BoxText,
-  NewsAuthor
+  NewsAuthor,
+  RowGrid
 } from "../CurrentsAPI/StyledCurrentsAPI";
 import { Title } from "../CurrentsAPI/Title";
 import { Image } from "../CurrentsAPI/Image";
@@ -16,33 +16,58 @@ import Tippy from "@tippyjs/react";
 
 // o parâmetro newsObject é obtido como props no arquivo CurrentsAPI.jsx
 const NewsAPIColumns = (newsObject) => {
-  //slice, pega as 04 primeiras instancias
   /* console.log("NEWS OBJECT IN NEWS API COLUMNS ");
   console.log(newsObject.news); */
   const newsObjectSlice = newsObject.news;
+  const resolution = window.innerWidth; //resolution for responsiveness
 
-  //grid loop
+  //========== Matrix with different rows and responsiveness ===========================
+
   let newsObjectGrid = [];
-  let nn = 0;
+  if (resolution > 1280) {
+    let nn = 0;
 
-  for (let i = 0; i < newsObjectSlice.length; ) {
-    let n = Math.floor(Math.random() * 3) + 2;
+    for (let i = 0; i < newsObjectSlice.length; ) {
+      let n = Math.floor(Math.random() * 3) + 2;
 
-    if (n == nn) {
-      n = 4;
-    }
+      if (n == nn) {
+        n = 4;
+      }
 
-    newsObjectGrid.push(newsObjectSlice.slice(i, i + n)); // Pegar os próximos 4 elementos
+      newsObjectGrid.push(newsObjectSlice.slice(i, i + n)); // Pegar os próximos n elementos
 
-    nn = n;
-    i += n;
-    /*  console.log("testNewsObjectGrid ");
+      nn = n;
+      i += n;
+      /*  console.log("testNewsObjectGrid ");
     console.log(newsObjectGrid); */
+    }
+  } else if (resolution < 1280 && resolution > 1024) {
+    newsObjectGrid = [];
+    let nn = 0;
+
+    for (let i = 0; i < newsObjectSlice.length; ) {
+      let n = 2;
+      newsObjectGrid.push(newsObjectSlice.slice(i, i + n)); // Pegar os próximos n elementos
+
+      i += n;
+    }
+  } else if (resolution < 1024) {
+    newsObjectGrid = [];
+    for (let i = 0; i < newsObjectSlice.length; i++) {
+      let n = 1;
+      newsObjectGrid.push(newsObjectSlice.slice(i, i + n)); // Pegar os próximos n elementos
+
+      i += n;
+    }
   }
 
+  console.log("testnewsObjectGrid");
+  console.log(newsObjectGrid);
+  //================================================================
+
   const newsGrid = newsObjectGrid.map((items, index) => {
-    console.log("testFavicon");
-    console.log(items);
+    console.log("testItems");
+    console.log(items[0].url);
 
     let n = items.length;
     let newsJSX_col = [];
@@ -85,60 +110,20 @@ const NewsAPIColumns = (newsObject) => {
     return newsJSX_col;
   });
 
+  console.log("testNewsjsx_Col");
+  console.log(newsGrid);
+
   let l_newsJSX = newsGrid.length;
   let newsJSX_row = [];
   for (let i = 0; i < l_newsJSX; i++) {
-    if (newsGrid[i].length == 2) {
-      newsJSX_row.push(
-        <EqualColumns_grid className="parent">
-          <style>{`
-        .parent > div:nth-child(2) {
-         width:50%;
-         margin:10px;
-       
-         
-        }
-        .parent > div:nth-child(3) {
-          width:50%;
-          margin:10px;
-         }
-      `}</style>
-          {newsGrid[i]}
-        </EqualColumns_grid>
-      );
+    if (newsGrid[i].length == 1) {
+      newsJSX_row.push(<RowGrid>{newsGrid[i]}</RowGrid>);
+    } else if (newsGrid[i].length == 2) {
+      newsJSX_row.push(<RowGrid>{newsGrid[i]}</RowGrid>);
     } else if (newsGrid[i].length == 3) {
-      newsJSX_row.push(
-        <EqualColumns_grid className="Tparent">
-          <style>{`
-        .Tparent > div:nth-child(2) {
-         width:25%;
-         margin:10px;
-        }
-        .Tparent > div:nth-child(3) {
-          width:25%;
-          margin:10px;
-         }
-
-         .Tparent > div:nth-child(4) {
-          width:50%;
-          margin:10px;
-         }
-      `}</style>
-          {newsGrid[i]}
-        </EqualColumns_grid>
-      );
+      newsJSX_row.push(<RowGrid>{newsGrid[i]}</RowGrid>);
     } else if (newsGrid[i].length == 4) {
-      newsJSX_row.push(
-        <EqualColumns_grid className="Fparent">
-          <style>{`
-        .Fparent > div:nth-child(n) {
-          width:25%;
-          margin:10px;
-         }
-      `}</style>
-          {newsGrid[i]}
-        </EqualColumns_grid>
-      );
+      newsJSX_row.push(<RowGrid>{newsGrid[i]}</RowGrid>);
     }
     console.log("TestGRID");
     console.log(newsGrid[i].length);
@@ -150,7 +135,6 @@ const NewsAPIColumns = (newsObject) => {
       <Wrapper>{newsJSX_row}</Wrapper>
     </>
   );
-  console.log("modify to new commit");
 };
 
 export default NewsAPIColumns;
