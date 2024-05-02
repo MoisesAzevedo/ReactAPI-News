@@ -7,6 +7,7 @@
 - Integração de APIs externas
 - Axios
 - JavaScript
+- Design Responsivo
 - CSS
 - HTML
 
