@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import {
   Container,
   Icon,
+  CategoryList,
   CategoriesStyle,
   Category,
   Wrapper,
-  BurgerMenu
+  BurgerMenu,
+  Menu
 } from "./NewsHeaderStyled";
 import favicon from "../assets/img/favicon.ico";
 
@@ -87,12 +89,24 @@ if (category != null) {
 export let categoryParse = categoryNotDefined;
 
 const NewsHeader = () => {
+  const [viewMenu, setViewMenu] = useState("none");
+
+  const ViewMenuButton = () => {
+    if (viewMenu == "none") {
+      setViewMenu("block");
+    } else {
+      setViewMenu("none");
+    }
+  };
+
   return (
     <Wrapper>
       <Container>
         <Icon src={favicon}></Icon>
-        {categoryJSX}
-        <BurgerMenu>☰</BurgerMenu>
+        <CategoryList>{categoryJSX}</CategoryList>
+
+        <BurgerMenu onClick={ViewMenuButton}>☰</BurgerMenu>
+        <Menu display={viewMenu}> {categoryJSX}</Menu>
       </Container>
     </Wrapper>
   );

@@ -42,17 +42,56 @@ export const BurgerMenu = styled.p`
   position: absolute;
   font-size: 35px;
   display: none;
+  transition: 500ms;
+
   @media screen and (max-width: ${tabletDisplay}) {
-    display: block;
+    display: inline-block;
+
+    &:active,
+    &:hover {
+      cursor: pointer;
+      transform: rotate(90deg);
+      transition: 100ms;
+    }
+  }
+`;
+
+export const Menu = styled.div`
+  background-color: white;
+  display: none;
+  width: 100%;
+  position: absolute;
+  margin-top: 600px;
+  font-size: 13px;
+  background: rgb(154, 188, 200);
+  background: linear-gradient(
+    194deg,
+    rgba(154, 188, 200, 1) 0%,
+    rgba(126, 207, 159, 1) 100%
+  );
+  box-shadow: -1px 8px 19px 0px GREY;
+  border-bottom: 7px solid;
+  border-color: white;
+
+  @media screen and (max-width: ${tabletDisplay}) {
+    display: ${(props) => {
+      return props.display;
+    }};
+  }
+`;
+
+export const CategoryList = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: ${tabletDisplay}) {
+    display: none;
   }
 `;
 
 export const CategoriesStyle = styled.div`
   display: flex;
   align-items: center;
-  @media screen and (max-width: ${tabletDisplay}) {
-    display: none;
-  }
 `;
 
 export const Category = styled.p`
@@ -64,11 +103,12 @@ export const Category = styled.p`
     cursor: pointer;
   }
 
-  @media screen and (max-width: ${desktopDisplay[0]}) {
+  @media screen and (max-width: ${desktopDisplay[1]}) {
     font-size: 13px;
   }
-  @media screen and (max-width: ${tabletDisplay}) {
-    display: none;
+
+  @media screen and (max-width: ${desktopDisplay[0]}) {
+    font-size: 20px;
   }
 `;
 
