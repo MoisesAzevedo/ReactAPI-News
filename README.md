@@ -12,3 +12,5 @@
 - Coloração dinâmica e automática
 - Layout com Grid dinamico e automatico
  
+Visualize aqui:
+https://moisesazevedo.github.io/ReactAPI-News/
