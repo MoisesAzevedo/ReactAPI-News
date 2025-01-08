@@ -12,7 +12,4 @@
 - CSS
 - HTML
 - criação de algoritmo que gera automaticamente os gradients e os columns e rows do grid (ctrl + R para ver o design mudar)
-
-METAS
-
-- adicionar noticias em alta
+ 
