@@ -54,7 +54,7 @@ const NewsHeader = () => {
           <Category
             onClick={() => {
               setNullData(categories[i]);
-              console.log("click");
+              console.log("click click");
             }}
           >
             {categoriesSelector[i]}
