@@ -14,10 +14,8 @@ import { Title } from "../CurrentsAPI/Title";
 import { Image } from "../CurrentsAPI/Image";
 import Tippy from "@tippyjs/react";
 
-// o parâmetro newsObject é obtido como props no arquivo CurrentsAPI.jsx
+//newsObject is sent as props on CurrentsAPI.jsx
 const NewsAPIColumns = (newsObject) => {
-  /* console.log("NEWS OBJECT IN NEWS API COLUMNS ");
-  console.log(newsObject.news); */
   const newsObjectSlice = newsObject.news;
   const resolution = window.innerWidth; //resolution for responsiveness
 
@@ -38,11 +36,8 @@ const NewsAPIColumns = (newsObject) => {
 
       nn = n;
       i += n;
-      /*  console.log("testNewsObjectGrid ");
-    console.log(newsObjectGrid); */
     }
   } else if (resolution < 1280 && resolution > 1024) {
-    newsObjectGrid = [];
     let nn = 0;
 
     for (let i = 0; i < newsObjectSlice.length; ) {
@@ -80,6 +75,7 @@ const NewsAPIColumns = (newsObject) => {
       newsJSX_col.push(
         <Container>
           <Image src={items[i].image} onClick={items[i].url} />
+
           <Letter>
             <Tippy
               content={<BoxText>{items[i].title}</BoxText>}
@@ -116,15 +112,8 @@ const NewsAPIColumns = (newsObject) => {
   let l_newsJSX = newsGrid.length;
   let newsJSX_row = [];
   for (let i = 0; i < l_newsJSX; i++) {
-    if (newsGrid[i].length == 1) {
-      newsJSX_row.push(<RowGrid>{newsGrid[i]}</RowGrid>);
-    } else if (newsGrid[i].length == 2) {
-      newsJSX_row.push(<RowGrid>{newsGrid[i]}</RowGrid>);
-    } else if (newsGrid[i].length == 3) {
-      newsJSX_row.push(<RowGrid>{newsGrid[i]}</RowGrid>);
-    } else if (newsGrid[i].length == 4) {
-      newsJSX_row.push(<RowGrid>{newsGrid[i]}</RowGrid>);
-    }
+    newsJSX_row.push(<RowGrid>{newsGrid[i]}</RowGrid>);
+
     console.log("TestGRID");
     console.log(newsGrid[i].length);
   }
@@ -133,6 +122,7 @@ const NewsAPIColumns = (newsObject) => {
     <>
       {" "}
       <Wrapper>{newsJSX_row}</Wrapper>
+      {/*  <Wrapper>olá</Wrapper> */}
     </>
   );
 };

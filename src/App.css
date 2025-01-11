@@ -7,6 +7,7 @@ body {
   background-size: cover;
   display: flex;
   flex-direction: column;
+  background-color: #f8f7f3;
 }
 b .fundoBody {
   position: fixed;

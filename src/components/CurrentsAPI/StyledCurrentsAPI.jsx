@@ -2,18 +2,26 @@ import styled from "styled-components";
 import { getRandomColor, getRandomColor2 } from "./getRandomColor";
 
 export const desktopDisplay = ["1291px", "1440px"];
-export const tabletDisplay = ["1280px"];
-export const mobileDisplay = ["1024px"];
+export const tabletDisplay = ["1240px"];
+export const mobileDisplay = ["1000px"];
 
 export const Wrapper = styled.div`
   align-items: center;
-  width: 80%;
   display: flex;
   flex-direction: column;
-  margin-top: 89px;
   justify-content: center;
   margin: auto;
-  margin-top: 90px;
+  margin-top: 60px;
+
+  width: 1240px;
+
+  @media screen and (max-width: "1000px") {
+    width: 500px;
+  }
+
+  @media screen and (max-width: ${tabletDisplay}) {
+    width: 500px;
+  }
 `;
 
 //======================= articles block ===================
@@ -28,7 +36,9 @@ export const RowGrid = styled.div`
     margin: 10px;
   }
 
-  @media screen and (max-width: ${desktopDisplay[1]}) {
+  @media screen and (max-width: ${tabletDisplay}) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -53,6 +63,10 @@ export const Container = styled.div`
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
   }
+
+  @media screen and (max-width: ${tabletDisplay}) {
+    height: 500px;
+  }
 `;
 
 //images of news
@@ -61,6 +75,10 @@ export const ImageNews = styled.div`
   height: 195px;
   overflow: hidden;
   @media screen and (max-width: ${mobileDisplay}) {
+    height: 250px;
+  }
+
+  @media screen and (max-width: ${tabletDisplay}) {
     height: 250px;
   }
 `;
