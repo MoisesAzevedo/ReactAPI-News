@@ -1,6 +1,6 @@
 import React from "react";
-import { ImageNews } from "./StyledCurrentsAPI";
-import { ElementImage } from "./StyledCurrentsAPI";
+import { ImageNews } from "./StyledCurrentsAPI.tsx";
+import { ElementImage } from "./StyledCurrentsAPI.tsx";
 
 export const Image = (props) => {
   return (

@@ -1,6 +1,6 @@
 import "./App.css";
 import { CategoryProvider } from "./CategoryContext";
-import CurrentsAPI from "./components/CurrentsAPI/CurrentsAPI";
+import CurrentsAPI from "./components/CurrentsAPI/CurrentsAPI.tsx";
 import Home from "./components/HomePage/Home";
 //import NewsAPI from "./components/NewsAPI/NewsAPI";
 

@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { desktopDisplay, tabletDisplay } from "./CurrentsAPI/StyledCurrentsAPI";
+import {
+  desktopDisplay,
+  tabletDisplay
+} from "./CurrentsAPI/StyledCurrentsAPI.tsx";
+
+interface StyledProps {
+  display?: string; // A propriedade é opcional
+}
 
 export const Wrapper = styled.div`
   margin: 0;
@@ -60,7 +67,7 @@ export const BurgerMenu = styled.p`
   }
 `;
 
-export const Menu = styled.div`
+export const Menu = styled.div<StyledProps>`
   display: none;
 
   position: absolute;
@@ -91,12 +98,12 @@ export const Menu = styled.div`
   }
 `;
 
-export const CategoryList = styled.div`
+export const CategoryList = styled.div<StyledProps>`
   display: flex;
   align-items: center;
 
-  @media screen and (max-width: ${tabletDisplay}) {
-    display: none;
+  @media screen and (max-width: ${(props) => props.theme.tabletDisplay}) {
+    display: ${(props) => props.display};
   }
 `;
 

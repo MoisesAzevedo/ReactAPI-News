@@ -1,5 +1,5 @@
 import React from "react";
-import { TitleStyle, TitleAnchor } from "./StyledCurrentsAPI";
+import { TitleStyle, TitleAnchor } from "./StyledCurrentsAPI.tsx";
 
 export const Title = (props) => {
   return (

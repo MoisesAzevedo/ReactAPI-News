@@ -8,7 +8,7 @@ import {
   Wrapper,
   BurgerMenu,
   Menu
-} from "./NewsHeaderStyled";
+} from "./NewsHeaderStyled.tsx";
 import favicon from "../assets/img/favicon.ico";
 import { useCategory } from "../CategoryContext";
 
