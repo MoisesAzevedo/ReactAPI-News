@@ -49,6 +49,7 @@ const CurrentsAPI: React.FC = () => {
   );
 
   const url = "https://api.currentsapi.services/v1/search";
+  const apiKey = process.env.REACT_APP_CURRENTS_API_KEY;
 
   useEffect(() => {
     console.log("CurrentsAPI: API request");
@@ -56,7 +57,7 @@ const CurrentsAPI: React.FC = () => {
     axios
       .get<ApiResponse>(url, {
         headers: {
-          Authorization: "zXSSH3F7mx-EwiHEZuiwOwm-EXcuCvipaVcS3ktqVKhjPoVi"
+          Authorization: apiKey
         },
         params: {
           category: categoryData.current
