@@ -7,7 +7,6 @@ import {
   Description,
   Author,
   Favicon,
-  Date,
   BoxText,
   NewsAuthor,
   RowGrid
@@ -15,6 +14,9 @@ import {
 import { Title } from "../CurrentsAPI/Title";
 import { Image } from "../CurrentsAPI/Image";
 import Tippy from "@tippyjs/react";
+
+// Renomeando o 'Date' importado para evitar conflito
+import { Date as StyledDate } from "../CurrentsAPI/StyledCurrentsAPI.tsx"; // Ou qualquer outro nome para evitar conflito
 
 interface NewsItem {
   id: string;
@@ -28,24 +30,18 @@ interface NewsItem {
   published: string;
 }
 
-//newsObject is sent as props on CurrentsAPI.jsx
+// Função para formatar a data
+const formatDate = (dateString: string): string => {
+  const nativeDate: Date = new Date(dateString); // Usando o 'Date' nativo do JS
+  const day: string = String(nativeDate.getDate()).padStart(2, "0");
+  const month: string = String(nativeDate.getMonth() + 1).padStart(2, "0"); // Mês começa do 0
+  const year: number = nativeDate.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
 const NewsAPIColumns: React.FC<{ news: NewsItem[] }> = ({ news }) => {
-  interface NewsItem {
-    id: string;
-    title: string;
-    description: string;
-    url: string;
-    author: string;
-    image: string;
-    language: string;
-    category: string[];
-    published: string;
-  }
-
-  const newsObjectSlice: NewsItem[] = news;
-  const resolution = window.innerWidth; //resolution for responsiveness
-
-  //========== Matrix with different rows and responsiveness ===========================
+  const newsObjectSlice = news;
+  const resolution = window.innerWidth; // resolution for responsiveness
 
   const newsObjectGrid: NewsItem[][] = [];
 
@@ -55,11 +51,11 @@ const NewsAPIColumns: React.FC<{ news: NewsItem[] }> = ({ news }) => {
     for (let i = 0; i < newsObjectSlice.length; ) {
       let n = Math.floor(Math.random() * 3) + 2;
 
-      if (n == nn) {
+      if (n === nn) {
         n = 4;
       }
 
-      newsObjectGrid.push(newsObjectSlice.slice(i, i + n)); // get next items
+      newsObjectGrid.push(newsObjectSlice.slice(i, i + n));
 
       nn = n;
       i += n;
@@ -74,7 +70,6 @@ const NewsAPIColumns: React.FC<{ news: NewsItem[] }> = ({ news }) => {
       i += n;
     }
   } else if (resolution < 1024) {
-    const newsObjectGrid: NewsItem[][] = [];
     for (let i = 0; i < newsObjectSlice.length; i++) {
       let n = 1;
       newsObjectGrid.push(newsObjectSlice.slice(i, i + n));
@@ -82,14 +77,7 @@ const NewsAPIColumns: React.FC<{ news: NewsItem[] }> = ({ news }) => {
     }
   }
 
-  console.log("testnewsObjectGrid");
-  console.log(newsObjectGrid);
-  //================================================================
-
   const newsGrid = newsObjectGrid.map((items, index) => {
-    console.log("testItems");
-    console.log(items[0].url);
-
     let n = items.length;
 
     let newsJSX_col: JSX.Element[] = [];
@@ -102,10 +90,7 @@ const NewsAPIColumns: React.FC<{ news: NewsItem[] }> = ({ news }) => {
 
       newsJSX_col.push(
         <Container key={items[i].id}>
-          <Image
-            src={items[i].image}
-            onClick={() => window.open(items[i].url, "_blank")}
-          />
+          <Image src={items[i].image} onClick={items[i].url} />
           <Letter>
             <Tippy
               content={<BoxText>{items[i].title}</BoxText>}
@@ -124,7 +109,9 @@ const NewsAPIColumns: React.FC<{ news: NewsItem[] }> = ({ news }) => {
             <Author>
               <Favicon src={favicon} />
               <NewsAuthor>{items[i].author}</NewsAuthor>
-              <Date>{items[i].published}</Date>
+              {/* Formatar a data */}
+              <StyledDate>{formatDate(items[i].published)}</StyledDate>{" "}
+              {/* Usando o StyledDate */}
             </Author>
           </Letter>
         </Container>
@@ -134,25 +121,17 @@ const NewsAPIColumns: React.FC<{ news: NewsItem[] }> = ({ news }) => {
     return newsJSX_col;
   });
 
-  console.log("testNewsjsx_Col");
-  console.log(newsGrid);
-
   let newsJSX_row: JSX.Element[] = [];
 
   let l_newsJSX: number = newsGrid.length;
 
   for (let i = 0; i < l_newsJSX; i++) {
     newsJSX_row.push(<RowGrid key={i}>{newsGrid[i]}</RowGrid>);
-
-    console.log("TestGRID");
-    console.log(newsGrid[i].length);
   }
 
   return (
     <>
-      {" "}
       <Wrapper>{newsJSX_row}</Wrapper>
-      {/*  <Wrapper>olá</Wrapper> */}
     </>
   );
 };

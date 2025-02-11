@@ -5,7 +5,7 @@ import {
 } from "./CurrentsAPI/StyledCurrentsAPI.tsx";
 
 interface StyledProps {
-  display?: string; // A propriedade é opcional
+  display?: string;
 }
 
 export const Wrapper = styled.div`
@@ -102,8 +102,12 @@ export const CategoryList = styled.div<StyledProps>`
   display: flex;
   align-items: center;
 
-  @media screen and (max-width: ${(props) => props.theme.tabletDisplay}) {
+  /* @media screen and (max-width: ${(props) => props.theme.tabletDisplay}) {
     display: ${(props) => props.display};
+  } */
+
+  @media screen and (max-width: ${tabletDisplay}) {
+    display: none;
   }
 `;
 
